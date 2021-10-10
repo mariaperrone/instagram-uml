@@ -32,13 +32,14 @@ class Post(Base):
 
 class TypeEnum(enum.Enum):
     image=1
-    text=2
+    icon=2
+    text=3
 
 class Media(Base):
     __tablename__ = 'media'
     id = Column(Integer, primary_key=True)
     type= Column(Enum(TypeEnum))
-    url= Column(String(50), nullable=False)
+    url= Column(String(50))
     post_id = Column(Integer, ForeignKey('post.id'), primary_key=True)
     post = relationship("Post")
 
